@@ -1,0 +1,215 @@
+                                                
+         HARTREE-FOCK + BCS + QRPA CODE         
+         BASED ON A SKYRME INTERACTION          
+                                                
+         -Authors: G. Colò and X. Roca-Maza     
+         -Affiliation: UniMi and INFN (Milano)  
+         -Date: July 9th 2020                   
+         -Version: 1.0 (TESTING VERSION)        
+         -Publication: Preliminary version      
+                                                
+  INPUT FILES:                                  
+         - hfbcs-qrpa.in: set needed input info 
+           to run the code for a given nucleus  
+           interaction, etc. (see notes)        
+                                                
+         - param.qrpa: list of default          
+           parameters                           
+                                                
+  OUTPUT FILES:                                 
+         - hfbcs-qrpa.out: (THIS FILE) main     
+           output of the code                   
+                                                
+         - quasiparticle_states.out: list of    
+           states used for the calculation      
+                                                
+         - basis_states.out: list of two body   
+           PP/NN configurations                 
+                                                
+         - d.out: proton and neutron densities  
+                                                
+         - td.out: proton and neutron transition
+           densities for all states (large file)
+                                                
+         - strength_*.out: isoscalar, isovector 
+           and electromagnetic strengths        
+                                                
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+      READING SKYRME INTERACTION TO BE USED     
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+ NAME: SLy5 
+
+ SKYRME FORCE PARAMETERS IN STANDARD FORM:
+
+           t0  =   -2484.88000
+           x0  =       0.77800
+           t1  =     483.13000
+           x1  =      -0.32800
+           t2  =    -549.40000
+           x2  =      -1.00000
+           t3  =   13763.00000
+           x3  =       1.26700
+           g   =       0.16667
+           W0  =     126.00000
+           W0p =     126.00000
+
+ PARAMETERS OF THE SKYRME ENERGY DENSITY FUNCTIONAL:
+ as defined in J. Dobaczewski and J. Dudek,
+ Phys. Rev. C52, 1827 (1995)
+
+      C_0^\rho =    -931.83000 +     860.18750 *\rho^ 0.16667
+      C_1^\rho =     793.91916 +   -1013.30087 *\rho^ 0.16667
+C_0^\delta\rho =     -76.52453
+C_1^\delta\rho =      16.37485
+      C_0^\tau =      56.24937
+      C_1^\tau =      23.95020
+         C_0^s =    -172.69916 +     439.84254 *\rho^ 0.16667
+         C_1^s =     310.61000 +    -286.72917 *\rho^ 0.16667
+  C_0^\nabla J =     -94.50000
+  C_1^\nabla J =     -31.50000
+  C_0^\Delta s =      46.08734
+  C_1^\Delta s =      14.06234
+         C_0^T =     -15.66645
+         C_1^T =     -64.53312
+
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+          HF+BCS CALCULATION IN A BOX           
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+ NUCLEUS:
+ -Mass number   120.
+ -Proton number  50.
+
+ BOX PARAMETERS:
+ -N. of points   200
+ -Step size       0.10E+00
+
+ CONVERGENCE PARAMETERS:
+ -Error spe       0.10E-05
+ -Error gap eq.   0.10E-05
+ -Error num. eq.  0.10E-05
+
+ POTENTIAL INCLUDED IN THE CALCULATIONS:
+ -SKYRME STANDARD WITH
+       |___ J2 TERMS... YES
+       |___ TENSOR..... NO
+ -COULOMB DIRECT....... YES
+ -COULOMB EXCHANGE..... YES
+ -SPIN-ORBIT........... YES
+ -DEFAULT PAIRING...... NO
+ -PROT. PAIRING (BCS).. YES
+        ENERGY CUT.....   0.0000000000000000     
+        LEV. ABOVE F...           6
+ -NEUT. PAIRING (BCS).. YES
+        ENERGY CUT.....   0.0000000000000000     
+        LEV. ABOVE F...           6
+    Type: delta force      
+    Vp= V0(1-x(rho/rho0))^g
+   V0  =   0.87060E+03
+   x   =   0.10000E+01
+   rho0=   0.16000E+00
+   g   =   0.10000E+01
+ -CENTER OF MASS CORR.. YES
+
+ CONVERGENCE:
+ -At iteration number:             77
+ -Maximum  error in spe:  0.90565E-05
+
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ SINGLE PARTICLE ENERGIES, OCCUP., V^2 AND GAPS 
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+ PROTON STATES
+
+   1S1/2     E=-0.4664E+02     DEG= 0.2000E+01     V^2= 0.1000E+01      D=  0.0000
+   1P3/2     E=-0.3873E+02     DEG= 0.4000E+01     V^2= 0.1000E+01      D=  0.0000
+   1P1/2     E=-0.3778E+02     DEG= 0.2000E+01     V^2= 0.1000E+01      D=  0.0000
+   1D5/2     E=-0.2980E+02     DEG= 0.6000E+01     V^2= 0.1000E+01      D=  0.0000
+   1D3/2     E=-0.2756E+02     DEG= 0.4000E+01     V^2= 0.1000E+01      D=  0.0000
+   2S1/2     E=-0.2559E+02     DEG= 0.2000E+01     V^2= 0.1000E+01      D=  0.0000
+   1F7/2     E=-0.2040E+02     DEG= 0.8000E+01     V^2= 0.1000E+01      D=  0.0000
+   1F5/2     E=-0.1634E+02     DEG= 0.6000E+01     V^2= 0.1000E+01      D=  0.0000
+   2P3/2     E=-0.1522E+02     DEG= 0.4000E+01     V^2= 0.1000E+01      D=  0.0000
+   2P1/2     E=-0.1361E+02     DEG= 0.2000E+01     V^2= 0.1000E+01      D=  0.0000
+   1G9/2     E=-0.1083E+02     DEG= 0.1000E+02     V^2= 0.1000E+01      D=  0.0000
+   2D5/2     E=-0.5056E+01     DEG= 0.0000E+00     V^2= 0.0000E+00      D=  0.0000
+   1G7/2     E=-0.4730E+01     DEG= 0.0000E+00     V^2= 0.0000E+00      D=  0.0000
+   2D3/2     E=-0.2674E+01     DEG= 0.0000E+00     V^2= 0.0000E+00      D=  0.0000
+   3S1/2     E=-0.2500E+01     DEG= 0.0000E+00     V^2= 0.0000E+00      D=  0.0000
+  1H11/2     E=-0.1201E+01     DEG= 0.0000E+00     V^2= 0.0000E+00      D=  0.0000
+   2F7/2     E= 0.4743E+01     DEG= 0.0000E+00     V^2= 0.0000E+00      D=  0.0000
+
+ NEUTRON STATES
+
+   1S1/2     E=-0.5616E+02     DEG= 0.2000E+01     V^2= 0.1000E+01      D=  0.2017
+   1P3/2     E=-0.4748E+02     DEG= 0.4000E+01     V^2= 0.1000E+01      D=  0.4678
+   1P1/2     E=-0.4615E+02     DEG= 0.2000E+01     V^2= 0.1000E+01      D=  0.4191
+   1D5/2     E=-0.3787E+02     DEG= 0.5999E+01     V^2= 0.9998E+00      D=  0.7963
+   1D3/2     E=-0.3481E+02     DEG= 0.3999E+01     V^2= 0.9998E+00      D=  0.7045
+   2S1/2     E=-0.3334E+02     DEG= 0.1999E+01     V^2= 0.9997E+00      D=  0.8519
+   1F7/2     E=-0.2775E+02     DEG= 0.7993E+01     V^2= 0.9991E+00      D=  1.1555
+   1F5/2     E=-0.2250E+02     DEG= 0.5992E+01     V^2= 0.9987E+00      D=  1.0469
+   2P3/2     E=-0.2194E+02     DEG= 0.3993E+01     V^2= 0.9982E+00      D=  1.1819
+   2P1/2     E=-0.2013E+02     DEG= 0.1995E+01     V^2= 0.9975E+00      D=  1.1866
+   1G9/2     E=-0.1747E+02     DEG= 0.9937E+01     V^2= 0.9937E+00      D=  1.4813
+   2D5/2     E=-0.1137E+02     DEG= 0.5787E+01     V^2= 0.9644E+00      D=  1.2543
+   1G7/2     E=-0.9976E+01     DEG= 0.7133E+01     V^2= 0.8916E+00      D=  1.3924
+   3S1/2     E=-0.9077E+01     DEG= 0.1618E+01     V^2= 0.8089E+00      D=  1.0877
+   2D3/2     E=-0.8573E+01     DEG= 0.2530E+01     V^2= 0.6325E+00      D=  1.2771
+  1H11/2     E=-0.7227E+01     DEG= 0.2978E+01     V^2= 0.2481E+00      D=  1.7057
+   2F7/2     E=-0.1526E+01     DEG= 0.4533E-01     V^2= 0.5666E-02      D=  1.0167
+   3P3/2     E=-0.1663E-01     DEG= 0.2758E-02     V^2= 0.6894E-03      D=  0.4313
+   2F5/2     E= 0.1169E+01     DEG= 0.0000E+00     V^2= 0.0000E+00      D=  0.0000
+   1H9/2     E= 0.1856E+01     DEG= 0.0000E+00     V^2= 0.0000E+00      D=  0.0000
+  1I13/2     E= 0.2809E+01     DEG= 0.0000E+00     V^2= 0.0000E+00      D=  0.0000
+
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    CONTRIBUTIONS TO THE TOTAL ENERGY (MeV):
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+ -INTEGRAL OF THE ENERGY DENSITY:
+  E(KIN) =          0.21769E+04
+  E(SKYRME) =      -0.34793E+04
+   |___E(t0) =     -0.12698E+05
+   |___E(t3) =      0.82849E+04
+   |___E(t1,t2) =   0.93408E+03
+  E(SO) =          -0.54885E+02
+  E(CD) =           0.36706E+03
+  E(CE) =          -0.19131E+02
+  E(pair) =        -0.99067E+01
+  E(TOT) =         -0.10193E+04
+
+ -HF ENERGY + E_REA:
+  E(KIN) =          0.10885E+04
+  E(SPE) =         -0.14010E+04
+  E(REA) =         -0.69678E+03
+  E(pair) =        -0.99067E+01
+  E(TOT) =         -0.10193E+04
+
+ -NUMERICAL CHECKS:
+  E_INT/E_HF-1    
+  REL. ERR. (%) =   0.36747E-03
+
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+             ROOT MEAN SQUARE RADII
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  R(N) =            0.47278E+01
+  R(P) =            0.45865E+01
+  R(CH) =           0.46418E+01
+  R^2(CH) =         0.21546E+02
+   |___R^2(p) =     0.64000E+00
+   |___N*R^2(n)/Z= -0.15400E+00
+   |___R^2(SO-n) = -0.38991E-01
+   |___R^2(SO-p) =  0.63250E-01
+
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+          AVERAGE PAIRING GAPS (MeV):
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  GAP(P) =          0.11114E-29
+  GAP(n) =          0.14505E+01
+
+
+   CPU TIME IN SECONDS =     1.02
