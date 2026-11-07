@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run POT first, then RC.
-# Place this script in the run/ directory and keep the bin/ directory
-# alongside it, as in:
+# Place this script in run/p12C/ and keep the bin/ directory
+# alongside the project, as in:
 #   project/
 #   ├── bin/linux-x86_64/POT
 #   ├── bin/linux-x86_64/RC
@@ -20,9 +20,10 @@ for program in "$POT" "$RC"; do
         echo "Error: executable not found: $program" >&2
         exit 1
     fi
-    if [[ ! -x "$program" ]]; then
-        echo "Error: file is not executable: $program" >&2
-        echo "Run: chmod +x "$program"" >&2
+
+    # Ensure the executable permission is set before running.
+    if ! chmod +x "$program"; then
+        echo "Error: could not set executable permission: $program" >&2
         exit 1
     fi
 done
