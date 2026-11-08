@@ -1,0 +1,17 @@
+KTRAN     LAMBDA    NR        DR                            (Type of transition, steps)
+1         1         2000      0.05
+AT        AP        ZT        ZP        IT        IP        (exact if integer, twice if half-integer)
+12.00     1.0078    6         1         0         1
+LF        JF        JCF       NN        SF        Q-VALUE   (Configuration for bound state)
+1         1         1         0         1.00      1.944 
+LI        JI        JCI                                     (Configuration for scattering state)
+0         1         1
+NE        E0        DE                                      (number of energies, first energy, energy step)
+1000      0.01      0.01
+GT        GP                                                (Please read from web)
+0.00      0.00
+KECM      KXS       KSFA                                    ([0] MeV/b/MeVb, [1] keV/mb/keVb, [2] eV/mub/eVb)
+0         0         0
+REED                                                        ! Energy dependence REED*(1-m*/m)E
+1.000
+\\\\\\\\\\\\\\\\\\\\\\\\
